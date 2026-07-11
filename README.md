@@ -1,6 +1,6 @@
 # Live Meeting Intelligence Copilot
 
-<video src="https://github.com/parasar0810/Live-meeting-transcript/raw/main/demo.mp4" controls="controls" style="max-width: 100%;"></video>
+
 
 A backend that ingests a live meeting transcript over WebSocket, runs four concurrent specialized AI agents against the growing transcript, and fans out each agent's output to all connected browser clients in real time.
 
