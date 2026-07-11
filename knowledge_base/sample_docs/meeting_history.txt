@@ -1,0 +1,47 @@
+Prior Meeting Summaries — Engineering All-Hands
+Internal Reference for Context Resolution
+Last Updated: May 2024
+
+=== MEETING: Engineering All-Hands, April 15, 2024 ===
+Attendees: Full engineering org (~50 people)
+
+Key decisions made:
+  1. The v2.x API deprecation WILL happen in Q2. No more delays. This was confirmed by Sarah Chen.
+  2. The "Phoenix Project" (internal codename for Nova multi-cloud) is approved for Q3 planning.
+  3. On-call rotation changes: Engineering moves to 24-hour shifts (from 12-hour) starting May 1.
+  4. Jordan Kim confirmed as Tech Lead for Nova Platform (previously interim).
+
+Action items from that meeting:
+  - Marcus Williams: Draft v2.x deprecation notice for customers by April 22. [COMPLETED]
+  - Priya Patel: Schedule 1:1s with product team to align on Q3 scope by April 30. [COMPLETED]
+  - Dr. Felix Okonkwo: Provide updated threat model timeline by April 19. [COMPLETED — June 15 target confirmed]
+  - Amir Hassan: Complete Kubernetes 1.29 upgrade before Q3 work begins. [IN PROGRESS]
+
+=== MEETING: Platform Team Sprint Review, May 1, 2024 ===
+Attendees: Platform team (22 engineers) + Marcus Williams + Sarah Chen
+
+Key discussions:
+  - Nova v3.3 connection limit work is ahead of schedule (was 60% → now 75% at midpoint)
+  - The database performance issue flagged in April ("the slow query issue") has been resolved by Li Wei.
+    Root cause: missing composite index on the sessions table. Fix deployed April 28.
+  - Pulse v4.2 scoping started — Jordan Kim leading the tiered storage design.
+
+=== MEETING: Cross-Team Sync, May 10, 2024 ===
+Attendees: Marcus Williams, Priya Patel, Dr. Felix Okonkwo, Jordan Kim, Samara Johnson
+
+Key discussions:
+  - "The migration" referred to in this meeting = migrating the threat detection pipeline from
+    the old Python 2 codebase to the new Python 3 / FastAPI service. Target: Q2 complete.
+  - "The platform work" = Nova v3.3 features specifically, not all platform team work.
+  - "The integration" = the new connector between Guardian threat events and Pulse Monitoring dashboards.
+  - Action: Samara Johnson will build the Guardian-Pulse event bridge by June 1.
+  - Action: Jordan Kim will provide API spec for the bridge by May 17.
+
+=== TERMS USED INFORMALLY IN MEETINGS ===
+  "The platform" = Nova Platform (the product), not the platform team
+  "The platform team" = Marcus Williams's team of 22 engineers
+  "The project" in context of Q2 = usually refers to Nova v3.3 unless speaker specifies otherwise
+  "The migration" = Python 2 → Python 3 threat detection pipeline migration
+  "The integration" = Guardian-Pulse event bridge (Samara Johnson ownership)
+  "The old system" = legacy v2.x Nova API (being deprecated)
+  "The new dashboard" = connection analytics dashboard in Nova v3.3

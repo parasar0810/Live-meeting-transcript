@@ -1,0 +1,50 @@
+Acme Corp Q2 2024 Engineering Roadmap — Internal Reference
+Approved by: Sarah Chen (VP Engineering), David Park (CPO)
+Status: Active — as of May 2024
+
+=== Q2 2024 MILESTONES ===
+
+MILESTONE 1: Nova Platform v3.3 Release (Target: June 30, 2024)
+  Owner: Marcus Williams / Platform Team
+  Status: In progress (75% complete)
+  Key deliverables:
+    - WebSocket connection limit raised from 50k to 100k per node
+    - Improved failover: target < 500ms (down from 2 seconds)
+    - New dashboard for connection analytics
+    - Deprecation of v2.x API endpoints (breaking change — requires 60-day notice)
+  Risk: The v2.x API deprecation has been delayed twice already.
+        Engineering is committed to NOT delaying again this quarter.
+
+MILESTONE 2: Atlas Analytics 2.1 (Target: May 31, 2024)
+  Owner: Priya Patel / Product Team
+  Status: COMPLETED
+  Delivered:
+    - 40 new data connectors (total now 120+)
+    - Collaborative dashboard editing (real-time multiplayer)
+    - Performance: 30% query speed improvement on row scans > 100M rows
+
+MILESTONE 3: Guardian Threat Model Refresh (Target: June 15, 2024)
+  Owner: Dr. Felix Okonkwo / Data Team
+  Status: In progress (60% complete)
+  Key deliverables:
+    - Retrained behavioral detection model on 2024 threat data
+    - Expected improvement: MTTD from 4 minutes → 2.5 minutes
+    - New threat categories: supply chain attacks, LLM jailbreak attempts
+
+MILESTONE 4: Pulse Monitoring v4.2 — Long-term Retention (Target: July 15, 2024)
+  Owner: Jordan Kim / Platform Team
+  Status: Planning phase
+  Key deliverables:
+    - Tiered storage: hot (90 days NVMe), warm (1 year SSD), cold (5 years object storage)
+    - Cost reduction target: 40% reduction in storage costs vs current flat retention
+
+=== Q3 2024 PLANNED WORK (PRELIMINARY) ===
+  - Nova Platform multi-cloud support (AWS + GCP active-active)
+  - Guardian: HIPAA compliance certification
+  - Atlas: self-service embedding for customer ML models
+  - Infrastructure: Kubernetes 1.30 upgrade across all clusters
+
+=== ITEMS EXPLICITLY NOT ON ROADMAP (Q2/Q3 2024) ===
+  - Mobile SDK (pushed to Q4)
+  - On-premise deployment option (under evaluation, no commitment)
+  - Real-time collaborative features in Guardian (not planned)

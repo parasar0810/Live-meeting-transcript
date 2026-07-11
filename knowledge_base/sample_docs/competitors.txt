@@ -1,0 +1,49 @@
+Competitive Landscape Analysis — Internal Reference
+Prepared by: Data Team / Product Team
+Last Updated: April 2024
+Classification: Internal Only
+
+=== PRIMARY COMPETITORS ===
+
+COMPETITOR: StreamCore Inc.
+  Products: StreamCore Platform, StreamCore Analytics
+  Market position: #2 in cloud event streaming (Acme is #1 by revenue)
+  
+  Key specs (from public docs and benchmarks):
+    - Max concurrent connections: 30,000 per node
+    - WebSocket P99 latency: 18ms
+    - Pricing: $350/month starter (more expensive than Nova for equivalent tier)
+    - Notable weakness: No native multi-region replication; requires third-party add-on
+    - Notable strength: Mobile SDK available (Acme does not have this yet)
+
+COMPETITOR: DataVault Analytics
+  Products: DataVault BI, DataVault Predict
+  Market position: #3 in BI tools (behind Tableau, ahead of Acme Atlas)
+  
+  Key specs:
+    - Row processing: up to 500 million rows per query (Acme Atlas: 1 billion)
+    - Connectors: 85 native connectors (Acme Atlas: 120+)
+    - ML integration: limited (TensorFlow only)
+    - Price: $299/month base (lower than Atlas at $499)
+
+COMPETITOR: ShieldAI Security
+  Products: ShieldAI Protect, ShieldAI Compliance
+  Market position: Leader in SMB security, behind Acme Guardian in enterprise
+  
+  Key specs:
+    - MTTD: 6 minutes average (Acme Guardian: 4 minutes)
+    - MTTR: 18 minutes average (Acme Guardian: 12 minutes)
+    - Compliance: SOC2 only (lacks ISO 27001, HIPAA — Acme has all three)
+    - Price: $199/month (cheaper than Guardian, positioned at SMB)
+
+=== MARKET FACTS (from IDC Report, Q1 2024) ===
+  - Cloud infrastructure management market: $48.2 billion in 2024
+  - Expected CAGR 2024–2028: 22%
+  - Acme Corp estimated market share: 8.3%
+  - Note: IDC pegs StreamCore at 5.1% market share, NOT 12% as sometimes cited internally
+
+=== COMMON MISCONCEPTIONS TO CORRECT ===
+  - "StreamCore supports 100k connections per node" — FALSE. Their public docs cap at 30k.
+  - "DataVault processes more data than Atlas" — FALSE. DataVault cap is 500M rows; Atlas is 1B.
+  - "ShieldAI has ISO 27001 certification" — UNVERIFIED. Their site claims "in progress" as of April 2024.
+  - "We are losing market share to StreamCore" — NOT SUPPORTED BY DATA. IDC shows Acme growing.

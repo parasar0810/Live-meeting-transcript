@@ -1,0 +1,68 @@
+Acme Corp Engineering Team Directory — Internal Reference
+Last Updated: Q2 2024
+
+=== ENGINEERING LEADERSHIP ===
+
+Sarah Chen — VP of Engineering
+  - Responsible for: Overall engineering strategy, hiring, cross-team coordination
+  - Direct reports: 4 engineering directors
+  - Tenure: 4 years at Acme
+
+Marcus Williams — Director of Platform Engineering
+  - Responsible for: Nova Platform, Pulse Monitoring, core infrastructure
+  - Team size: 22 engineers
+  - Reports to: Sarah Chen
+
+Priya Patel — Director of Product Engineering
+  - Responsible for: Atlas Analytics, Guardian Security Suite, API layer
+  - Team size: 18 engineers
+  - Reports to: Sarah Chen
+
+=== PLATFORM ENGINEERING TEAM (THE PLATFORM TEAM) ===
+
+Lead: Marcus Williams
+Tech Lead: Jordan Kim
+  - Senior engineers: 8
+  - Mid-level: 10
+  - Junior: 4
+
+Primary responsibilities:
+  - Nova Platform core development and reliability
+  - Pulse Monitoring data pipeline
+  - Infrastructure as code (Terraform)
+  - SRE practices: on-call rotation, postmortems
+
+Key contacts by area:
+  - Database performance: Li Wei (Senior SRE)
+  - Kubernetes / deployment: Amir Hassan (Senior Platform Engineer)
+  - Streaming / real-time: Jordan Kim (Tech Lead)
+
+=== PRODUCT ENGINEERING TEAM ===
+
+Lead: Priya Patel
+Tech Lead: Samara Johnson
+  - Senior engineers: 6
+  - Mid-level: 9
+  - Junior: 3
+
+Primary responsibilities:
+  - Atlas Analytics frontend and backend
+  - Guardian Security Suite threat detection algorithms
+  - Customer-facing APIs and SDKs
+  - Partner integrations
+
+=== DATA TEAM ===
+
+Lead: Dr. Felix Okonkwo (Head of Data Science)
+  - Team size: 7 (3 data scientists, 2 ML engineers, 2 data analysts)
+  - Reports to: Sarah Chen (dotted line to CPO)
+
+Primary responsibilities:
+  - ML models for Guardian threat detection
+  - Atlas Analytics ML integration layer
+  - Data quality and governance
+
+=== CURRENT OPEN HEADCOUNT (Q2 2024) ===
+  - 3 Senior Backend Engineers (Platform team)
+  - 2 Senior Data Engineers (Data team)
+  - 1 Engineering Manager (Product team)

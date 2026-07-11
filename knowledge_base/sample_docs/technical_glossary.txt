@@ -1,0 +1,56 @@
+Acme Corp Technical Glossary — Internal Reference
+Maintained by: Engineering Leadership
+Last Updated: Q2 2024
+
+=== PRODUCT CODE NAMES & FORMAL NAMES ===
+
+  Phoenix Project → Nova Platform multi-cloud initiative (Q3 2024)
+  Project Lighthouse → Guardian Security Suite threat model refresh (Q2 2024)
+  Project Horizon → Long-term retention for Pulse Monitoring (v4.2)
+  Project Nexus → Guardian-Pulse event bridge integration
+
+=== TECHNICAL ACRONYMS ===
+
+  MTTD — Mean Time to Detect (security threat detection)
+  MTTR — Mean Time to Respond (incident response)
+  RPS — Requests Per Second
+  P99 — 99th percentile latency (1% of requests are slower than this number)
+  SLA — Service Level Agreement
+  SLO — Service Level Objective (internal target, stricter than SLA)
+  IaC — Infrastructure as Code
+  SRE — Site Reliability Engineering
+
+=== INFRASTRUCTURE TERMS ===
+
+  Cluster = a group of Nova Platform nodes managed as a unit
+  Node = a single Nova Platform server instance (handles up to 50k connections today, 100k in v3.3)
+  Hot tier = NVMe-backed storage for recent data (Pulse Monitoring, < 90 days)
+  Warm tier = SSD-backed storage for medium-term data (90 days – 1 year)
+  Cold tier = Object storage for long-term archives (1 year – 5 years)
+  The sessions table = primary database table for Nova Platform connection state
+  Circuit breaker = Nova Platform's fault isolation mechanism (built-in, not an add-on)
+
+=== ENGINEERING PROCESSES ===
+
+  Sprint review = bi-weekly team demo + retrospective (every other Wednesday)
+  All-hands = monthly full engineering org meeting (third Monday of the month)
+  Postmortem = blameless incident analysis document (required for any P1 or P2 incident)
+  On-call rotation = 24-hour shifts, rotating weekly per team
+  P1 incident = complete service outage or data loss risk
+  P2 incident = degraded service affecting >10% of customers
+  P3 incident = minor degradation, < 10% of customers affected
+
+=== COMPLIANCE & CERTIFICATIONS ===
+
+  SOC2 Type II = security audit standard (Acme is certified; renewal annual)
+  ISO 27001 = international information security standard (Acme is certified)
+  HIPAA = US healthcare data privacy regulation (Acme Guardian is HIPAA-compliant)
+  GDPR = EU data protection regulation (Acme is compliant across all products)
+  "In progress" for certification = not yet certified, do not claim certified status externally
+
+=== KEY METRICS DEFINITIONS ===
+
+  Concurrent connections = active, open WebSocket/TCP connections at a single point in time
+  Query throughput = rows processed per second across all active queries
+  Dashboard refresh = interval at which displayed data is updated from source
+  Uptime = percentage of time service is fully available (SLA: 99.95% = max 4.38 hours/year downtime)

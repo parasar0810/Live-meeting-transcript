@@ -1,0 +1,44 @@
+SARAH: Good morning everyone, let's get started with the weekly engineering sync. Marcus, can you kick us off with platform status?
+MARCUS: Sure. So Nova Platform v3.3 is tracking well — we're at about 75% complete, which is actually ahead of where we expected to be at this point.
+SARAH: Great. And the connection limit increase is on track?
+MARCUS: Yes. We're raising the concurrent connection limit from 50,000 to 100,000 per node. Should be ready before end of June.
+PRIYA: Marcus, quick question — I saw a doc that said StreamCore supports 100,000 connections per node. Does that change our competitive story?
+MARCUS: That's not accurate actually. StreamCore's public documentation caps them at 30,000 connections per node. We'll still be more than 3x their capacity after v3.3 ships.
+SARAH: Good. Let's make sure we're not repeating that 100k claim internally — that's a competitor number, not ours yet.
+JORDAN: I can put together a competitive comparison doc by end of this week if that would help. I'll take that action item.
+SARAH: Perfect. Jordan, please send it to the whole team by Friday.
+MARCUS: There's also the failover improvement. We're targeting sub-500 millisecond failover in v3.3, which is down from the current 2 seconds. That's a big reliability win.
+FELIX: Speaking of reliability, the Project Lighthouse work is going well. We've retrained the threat detection model and we're on track to cut MTTD from 4 minutes down to 2.5 minutes.
+SARAH: Felix, is that still hitting the June 15th deadline?
+FELIX: Yes, we're at about 60% complete on that milestone. I'm confident we'll make it.
+PRIYA: What about the migration? Where does that stand?
+FELIX: The migration is at about 70% done. We ran into some edge cases in the Python 3 port last week but Li Wei and her team resolved them. Should be fully complete by June 7th.
+SARAH: Great. Samara, any update on the integration?
+SAMARA: Yes — the integration is on schedule. I'll have the first working version of the Guardian-Pulse event bridge ready by June 1st. Jordan, I'll need the API spec from you before then.
+JORDAN: I'll send you the API spec by May 17th. I'll block off time tomorrow morning to write it up.
+SAMARA: Perfect, thanks.
+SARAH: Now I want to flag something. I've heard some people saying internally that Atlas Analytics can process more data than DataVault. Can someone confirm the actual numbers?
+PRIYA: Atlas processes up to 1 billion rows per query. DataVault is capped at 500 million. So yes, we're 2x DataVault there.
+SARAH: And the connector count?
+PRIYA: We have 120 native connectors. DataVault has 85. We're significantly ahead there too.
+FELIX: There's also been some confusion about ShieldAI and ISO 27001. Someone in sales said ShieldAI is ISO-certified. That's not accurate — their site says they're still in progress on that certification.
+SARAH: Right. Guardian has full ISO 27001 certification. Let's make sure sales has the right talking points. Priya, can you update the competitive battlecard by next Wednesday?
+PRIYA: I'll get that done. I'll update it and send it to the sales team by May 22nd.
+SARAH: On the market share question — I've seen the number 12% thrown around for StreamCore's market share. What does the IDC data actually say?
+MARCUS: IDC Q1 2024 report has StreamCore at 5.1% market share, not 12%. We're at 8.3% and growing. That 12% number is not supported by the data.
+SARAH: Okay, important correction. Let's stop using that 12% figure. Amir, what's the status on the Kubernetes upgrade?
+AMIR: The Kubernetes 1.29 upgrade is about 80% done across all clusters. I'm targeting completion by May 20th, which keeps us on track before the Q3 work kicks off.
+SARAH: Good. Let's talk about the v2.x deprecation. Marcus, this has been delayed twice. What's the commitment this quarter?
+MARCUS: We are not delaying again. The deprecation notice went to customers on April 22nd, which was our commitment. The 60-day notice period means the v2.x endpoints go offline on June 21st. That date is locked.
+SARAH: I want to be clear with the team — this is a firm commitment. There will be no extension. If there are customer issues, we handle them, but the date does not move.
+MARCUS: Understood. Jordan will be leading the migration support for any customers still on v2.x. Jordan, can you set up a customer migration office hours starting next week?
+JORDAN: Yes, I'll set up weekly office hours every Tuesday at 2pm starting next week and run them through the deprecation date.
+SARAH: Perfect. Now, for Q3 — Phoenix Project is approved. Marcus, your team will start detailed planning on the Nova multi-cloud work in July. The goal is AWS and GCP active-active by end of year.
+MARCUS: Got it. We'll kick off planning in the first week of July. I'll schedule a scoping session with the team.
+SARAH: One more thing on Pulse Monitoring — the Project Horizon tiered storage work. Jordan, where are we on the design?
+JORDAN: We're in planning phase. The design is straightforward — hot tier on NVMe for the first 90 days, warm tier on SSD for up to a year, cold on object storage for up to 5 years. We're targeting a 40% reduction in storage costs. I'll have a full design doc ready by June 10th.
+SARAH: That's a significant cost reduction. 40% on storage across all our Pulse customers is meaningful. Make sure we validate that estimate before we commit to it externally, okay?
+JORDAN: Absolutely. I'll flag it as an estimate until we have the benchmarks to back it up.
+SARAH: Great meeting everyone. Let me recap the action items. Jordan — competitive comparison doc by Friday. Jordan — API spec to Samara by May 17th. Jordan — customer migration office hours starting next Tuesday. Priya — battlecard update by May 22nd. Samara — Guardian-Pulse bridge first version by June 1st. Amir — Kubernetes upgrade complete by May 20th. Jordan — Project Horizon design doc by June 10th. Any questions?
+MARCUS: I think we're good. Quick note — our uptime last month was 99.97% across all Nova clusters, which beats the 99.95% SLA target. Team did great work.
+SARAH: Excellent. Thanks everyone. Same time next week.
