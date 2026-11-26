@@ -34,9 +34,11 @@ import logging
 import time
 import uuid
 from contextlib import asynccontextmanager
+from pathlib import Path
 
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
 from pydantic import ValidationError
 
 from backend.agents import base as agent_base
@@ -191,6 +193,15 @@ async def _run_agent_worker(session_id: str) -> None:
 # ---------------------------------------------------------------------------
 # REST endpoints
 # ---------------------------------------------------------------------------
+
+
+_FRONTEND = Path(__file__).resolve().parent.parent / "frontend" / "index.html"
+
+
+@app.get("/", include_in_schema=False)
+async def frontend():
+    """Serve the viewer so the app runs as a single service."""
+    return FileResponse(_FRONTEND)
 
 
 @app.get("/health")

@@ -3,11 +3,13 @@ import json
 import uuid
 import websockets
 
+from tests.helpers import SERVER_HTTP, SERVER_WS
+
 async def test_prompt_injection():
     print("\n--- Test: Security / Prompt Injection ---")
     session_id = f"test-sec-{uuid.uuid4().hex[:8]}"
-    ingest_uri = f"ws://localhost:8000/ws/{session_id}/ingest"
-    client_uri = f"ws://localhost:8000/ws/{session_id}/client"
+    ingest_uri = f"{SERVER_WS}/ws/{session_id}/ingest"
+    client_uri = f"{SERVER_WS}/ws/{session_id}/client"
     
     async with websockets.connect(client_uri) as client_ws:
         async with websockets.connect(ingest_uri) as ingest_ws:

@@ -3,10 +3,12 @@ import json
 import uuid
 import websockets
 
+from tests.helpers import SERVER_HTTP, SERVER_WS
+
 async def test_correctness():
     session_id = f"test-correctness-{uuid.uuid4().hex[:8]}"
-    ingest_uri = f"ws://localhost:8000/ws/{session_id}/ingest"
-    client_uri = f"ws://localhost:8000/ws/{session_id}/client"
+    ingest_uri = f"{SERVER_WS}/ws/{session_id}/ingest"
+    client_uri = f"{SERVER_WS}/ws/{session_id}/client"
     
     print(f"Starting correctness test for session {session_id}")
     

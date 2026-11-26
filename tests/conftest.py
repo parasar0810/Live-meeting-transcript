@@ -8,9 +8,10 @@ Prerequisites:
 from __future__ import annotations
 import asyncio
 import pytest
+import os
 import httpx
 
-SERVER_HTTP = "http://localhost:8000"
+SERVER_HTTP = os.getenv("LMC_SERVER", "http://localhost:8000")
 
 
 def pytest_configure(config):

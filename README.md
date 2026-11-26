@@ -83,7 +83,7 @@ INFO: Startup complete.
 
 ### Step 2 — Open the frontend (two browser windows)
 
-Open `frontend/index.html` in **two separate browser windows or tabs**. In each:
+Open **http://localhost:8000/** (the server now serves the viewer; it connects back to whichever host served it, or to `?server=ws://host:port`) in **two separate browser windows or tabs**. In each:
 1. Enter session ID: `demo-1`
 2. Click **Connect**
 
@@ -147,6 +147,19 @@ wscat -c ws://localhost:8000/ws/demo-1/ingest
 > {"chunk_id": "notanumber", "speaker": "SARAH", "text": "This is malformed"}
 ```
 Server returns `{"type":"error","code":"validation_error",...}` and the session continues normally.
+
+## Verified run (2026-11-26, local LLM)
+
+![Viewer after a simulated meeting](docs/screenshots/viewer.png)
+
+Run locally with no API key by pointing the OpenAI-compatible settings at [Ollama](https://ollama.com):
+`OPENAI_API_KEY=ollama OPENAI_API_BASE=http://127.0.0.1:11434/v1 LLM_MODEL=llama3.2`.
+
+- All 9 tests in `tests/` passed against a running server backed by `llama3.2` (3B) on CPU. Set `LMC_SERVER=http://host:port` if the server isn't on port 8000.
+- The 44-chunk sample meeting streamed to the viewer, and agents produced 15 outputs (fact-checks with knowledge-base sources, context resolution, rolling summaries).
+- On a CPU-only 3B model, each agent call took 30–105 s, so with one chunk per second the bounded work queue evicted the oldest tasks, as designed. That included every action-item task in this run, and ingestion never blocked. Real-time output needs a fast hosted model; the default configuration targets Groq's `llama-3.3-70b-versatile`.
+
+Fixed in this pass: the "meeting ended" banner claimed all agent processing was complete while tasks were still running, and the viewer's header overflowed on 375 px screens.
 
 ## Project Structure
 

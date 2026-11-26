@@ -5,11 +5,13 @@ import time
 import aiohttp
 import websockets
 
+from tests.helpers import SERVER_HTTP, SERVER_WS
+
 async def test_stress_backpressure():
     print("\n--- Test: Stress Backpressure ---")
     session_id = f"test-stress-{uuid.uuid4().hex[:8]}"
-    ingest_uri = f"ws://localhost:8000/ws/{session_id}/ingest"
-    state_uri = f"http://localhost:8000/sessions/{session_id}/state"
+    ingest_uri = f"{SERVER_WS}/ws/{session_id}/ingest"
+    state_uri = f"{SERVER_HTTP}/sessions/{session_id}/state"
     
     async with websockets.connect(ingest_uri) as ingest_ws:
         # Flood 200 chunks instantly
@@ -38,8 +40,8 @@ async def test_stress_backpressure():
                 print("FAIL: Work queue exceeded bounds!")
 
 async def run_single_session_load(session_id: str, latencies: list):
-    ingest_uri = f"ws://localhost:8000/ws/{session_id}/ingest"
-    client_uri = f"ws://localhost:8000/ws/{session_id}/client"
+    ingest_uri = f"{SERVER_WS}/ws/{session_id}/ingest"
+    client_uri = f"{SERVER_WS}/ws/{session_id}/client"
     
     async with websockets.connect(client_uri) as client_ws:
         async with websockets.connect(ingest_uri) as ingest_ws:

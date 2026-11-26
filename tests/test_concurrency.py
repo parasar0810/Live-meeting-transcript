@@ -3,11 +3,13 @@ import json
 import uuid
 import websockets
 
+from tests.helpers import SERVER_WS
+
 async def test_late_joiner():
     print("\n--- Test: Late Joiner ---")
     session_id = f"test-late-{uuid.uuid4().hex[:8]}"
-    ingest_uri = f"ws://localhost:8000/ws/{session_id}/ingest"
-    client1_uri = f"ws://localhost:8000/ws/{session_id}/client"
+    ingest_uri = f"{SERVER_WS}/ws/{session_id}/ingest"
+    client1_uri = f"{SERVER_WS}/ws/{session_id}/client"
     
     async with websockets.connect(client1_uri) as client1_ws:
         # Client 1 connects early
@@ -30,7 +32,7 @@ async def test_late_joiner():
 async def test_rapid_fire():
     print("\n--- Test: Rapid Fire ---")
     session_id = f"test-rapid-{uuid.uuid4().hex[:8]}"
-    ingest_uri = f"ws://localhost:8000/ws/{session_id}/ingest"
+    ingest_uri = f"{SERVER_WS}/ws/{session_id}/ingest"
     
     async with websockets.connect(ingest_uri) as ingest_ws:
         for i in range(10):
@@ -48,10 +50,10 @@ async def test_cross_session_leakage():
     session1 = f"session-a-{uuid.uuid4().hex[:8]}"
     session2 = f"session-b-{uuid.uuid4().hex[:8]}"
     
-    c1_uri = f"ws://localhost:8000/ws/{session1}/client"
-    c2_uri = f"ws://localhost:8000/ws/{session2}/client"
-    i1_uri = f"ws://localhost:8000/ws/{session1}/ingest"
-    i2_uri = f"ws://localhost:8000/ws/{session2}/ingest"
+    c1_uri = f"{SERVER_WS}/ws/{session1}/client"
+    c2_uri = f"{SERVER_WS}/ws/{session2}/client"
+    i1_uri = f"{SERVER_WS}/ws/{session1}/ingest"
+    i2_uri = f"{SERVER_WS}/ws/{session2}/ingest"
     
     async with websockets.connect(c1_uri) as c1_ws:
         async with websockets.connect(i2_uri) as i2_ws:

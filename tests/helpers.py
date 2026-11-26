@@ -8,6 +8,7 @@ The server must be running at SERVER_URL before tests execute.
 from __future__ import annotations
 
 import asyncio
+import os
 import json
 import time
 from typing import Any, Optional
@@ -15,8 +16,8 @@ from typing import Any, Optional
 import websockets
 from websockets.exceptions import ConnectionClosed
 
-SERVER_HTTP = "http://localhost:8000"
-SERVER_WS = "ws://localhost:8000"
+SERVER_HTTP = os.getenv("LMC_SERVER", "http://localhost:8000")
+SERVER_WS = SERVER_HTTP.replace("http", "ws", 1)
 
 # ---------------------------------------------------------------------------
 # Session management

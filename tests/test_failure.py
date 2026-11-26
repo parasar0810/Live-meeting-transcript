@@ -3,10 +3,12 @@ import json
 import uuid
 import websockets
 
+from tests.helpers import SERVER_HTTP, SERVER_WS
+
 async def test_malformed_input():
     print("\n--- Test: Malformed Input ---")
     session_id = f"test-fail-{uuid.uuid4().hex[:8]}"
-    ingest_uri = f"ws://localhost:8000/ws/{session_id}/ingest"
+    ingest_uri = f"{SERVER_WS}/ws/{session_id}/ingest"
     
     async with websockets.connect(ingest_uri) as ingest_ws:
         # Invalid JSON
@@ -34,7 +36,7 @@ async def test_malformed_input():
 async def test_llm_failure():
     print("\n--- Test: LLM Failure (Token Limit) ---")
     session_id = f"test-llm-{uuid.uuid4().hex[:8]}"
-    ingest_uri = f"ws://localhost:8000/ws/{session_id}/ingest"
+    ingest_uri = f"{SERVER_WS}/ws/{session_id}/ingest"
     
     async with websockets.connect(ingest_uri) as ingest_ws:
         massive_text = "I'll take the action item to " + ("do " * 100000) # Should trigger context limit on gpt-4o-mini

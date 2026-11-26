@@ -267,6 +267,12 @@
       }
     }
 
+    @media (max-width: 600px) {
+      header { flex-wrap: wrap; row-gap: 10px; }
+      .header-controls { margin-left: 0; width: 100%; flex-wrap: wrap; }
+      .header-controls input { flex: 1; min-width: 0; }
+    }
+
     .panel {
       background: var(--bg-panel);
       border: 1px solid var(--border);
@@ -780,7 +786,7 @@
 
   <!-- ===================== Meeting ended banner ===================== -->
   <div class="meeting-ended-banner" id="ended-banner">
-    ✅ Meeting ended — all agent processing complete. Connect a new session to start fresh.
+    ✅ Meeting ended — transcript complete. Agent results still in progress will keep appearing below.
   </div>
 
   <!-- ===================== Main grid ===================== -->
@@ -870,6 +876,13 @@
     // -------------------------------------------------------
     let ws = null;
     let sessionId = 'demo-1';
+    // Server: ?server=ws://host:port, else the host that served this page, else localhost:8000.
+    function wsBase() {
+      const p = new URLSearchParams(window.location.search).get('server');
+      if (p) return p.replace(/\/$/, '');
+      if (location.protocol.startsWith('http')) return `${location.protocol === 'https:' ? 'wss' : 'ws'}://${location.host}`;
+      return 'ws://localhost:8000';
+    }
     let chunkCount = 0;
     let outputCount = 0;
     let actionCount = 0;
@@ -889,7 +902,7 @@
       setStatus('connecting', 'Connecting…');
       document.getElementById('connect-btn').disabled = true;
 
-      const url = `ws://localhost:8000/ws/${sessionId}/client`;
+      const url = `${wsBase()}/ws/${sessionId}/client`;
       ws = new WebSocket(url);
 
       ws.onopen = () => {
